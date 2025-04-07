@@ -1,7 +1,7 @@
-# TreasureFit
+# Name of Organisation
+### TreasureFit
 
 # Project Title: TreasureFit
-<br>
 
 # Student Information:
 ### name & Surname: Treasure Lesinya
@@ -14,7 +14,7 @@
 ### 2nd goal= make it easy for clients to book class and enquire
 # key features:
 ### online classes, content library, community forum
-# Sitemap
+# Sitemap:
 ![Alt text](sitemap-1.jpg)
 
 

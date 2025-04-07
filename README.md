@@ -1,4 +1,4 @@
-# Name of Organisation
+# Name of Organisation:
 ### TreasureFit
 
 # Project Title: TreasureFit

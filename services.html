@@ -6,6 +6,22 @@
         <meta http-equiv="refresh" content="60"><!--this will allow my page to refresh every 60 seconds-->
         <meta name="viewport" content="width=device-width, initial-scale=1"><!--this ensures that my page is mobile-friendly-->
         <link rel="stylesheet" href="style.css">
+
+        <style>
+
+            #imga3{
+                float: right;
+                padding: 2%;
+
+            }
+            h3{
+                font-size: 40px;
+            }
+            b{
+                color: rgb(30, 0, 255);
+                font-size: 30px;
+            }
+        </style>
     </head>
     
     <body>
@@ -43,9 +59,10 @@
     <!--my main services offered at the organization-->
        <main>
         <div>
-            <img src="images/freetrial.jpg" width="400">
+            <img src="images/freetrial.jpg" width="600" id="imga2">
+            <img src="images/weights.jpg" width="600" id="imga3">
             <ul>
-                <h3> Core Fitness Services:</h3>
+                <h3 style="margin: 8%;"> Core Fitness Services:</h3>
 
 
                 <b>Group Fitness Classes:</b>
@@ -90,8 +107,11 @@
         </div>
        </main>
     <br>
+
+        <hr>
     <footer>
-        <p><mark>(Monday - Friday, 8:00AM-9:00PM SAST)</mark></p>
+        <div id="divf">
+            <p><mark>(Monday - Friday, 8:00AM-9:00PM SAST)</mark></p>
 
             <li>Phone: <mark>+27 13 298 0356 </mark></li>
             <li>Email: <mark>treasurefit@gmail.com</mark></li>
@@ -102,6 +122,7 @@
         <a href="services.html">
         <button type="button" onclick="alert('Home')" id="b1">BackTop</button>
         </a>
+        </div>
     </footer>
 
 </body>

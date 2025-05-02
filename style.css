@@ -1,0 +1,72 @@
+#div1{
+    background-color: black;
+      
+}
+
+#header1 {
+
+    background-color: black;
+    color: rgb(231, 236, 240);
+    padding: 3%;
+}
+
+#div2{
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+
+
+#img1{
+   float: right;
+
+}
+#imga2{
+    float: right;
+}
+
+button {
+    float: left;
+    font-size: 200%; 
+    color: black;
+    background-color: blue; 
+    border-radius: 10px;  
+}
+
+#b1{
+    color: black;
+    font-size: 100%;
+}
+
+a {
+    text-decoration-color: rgb(255, 255, 255);
+    border-radius: 10%;
+    border: 3px solid rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    font-size: 150%;
+}
+
+html{
+    background-color: black;
+}
+
+h3{
+    color: white;
+}
+
+p{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+}
+
+
+
+li{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+}
+address{
+    color: white;
+}

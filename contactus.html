@@ -10,7 +10,7 @@
 
         <style>
 
-            form{
+             form{
                  position: relative;
                 padding: 2%;
                 align-self:center;
@@ -19,10 +19,23 @@
             
             }
             p{
-                font-size: 30px;
+                font-size: 25px;
                 text-align: center;
                 
             }
+
+            #div4 {
+                background-color: blue;
+                padding: 5px;
+                display: none;
+                color: white;
+                font-size: large;
+            }
+  
+            span:hover + #div4 {
+                display: block;
+            }
+
         </style>
 
     </head>
@@ -59,10 +72,12 @@
     <main>
        <div>
             
-            <!--A picture weights that are available-->
-            <img src="images/weights.jpg" width="700" id="imga2">
-                <p>We're are here to help you on your fitness journey. Choose the best to connect with us:</p>
-        
+                <!--A picture weights that are available-->
+                <span><img src="images/weights.jpg" width="700"></span>
+            <div id="div4"> Relevant weights</div>
+            
+                <p class="mediaq">We're are here to help you on your fitness journey. Choose the best to connect with us:</p>
+        <br>
         <ul style="float: right; position: relative;">
             <!--Contact information for my clients or those who are interested-->
             <li>Phone: +27 13 298 0356 (Monday - Friday, 8:00AM-9:00PM SAST)</li>

@@ -125,7 +125,17 @@ a:link {
   a:active {
     color: white;
 }
+ p:hover{
+    color: blue;
+ }
 
+ input:hover{
+    background-color: limegreen;
+ }
+
+ textarea:hover{
+    background-color: limegreen;
+ }
 
 #a1:link, #a1:visited {
 

@@ -9,6 +9,36 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
          <style>
+            .accordion{
+                color: rgb(236, 1, 1);
+                background-size: 30%;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                text-align: left;
+                font-size: larger;
+
+            }
+            .accordion::after{
+                content: '\002B';
+                font-size: large;
+                float: right;
+            }
+
+            .active::after{
+                content: '\2212';
+            }
+
+            .active, .accordion:hover {
+                 background-color: rgb(66, 193, 193);
+            }
+            .panel {
+                padding: 0 18px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+               
+            }           
 
             #bling {
                 border: none;
@@ -31,6 +61,38 @@
                 height: 5%;
                 width: 20%;         
 
+            }
+            #trans {
+                width: 10%;
+                height: 10%;
+                background: rgb(15, 213, 207);
+                transition: width 2s;
+                text-align: center;
+                font-size: large; 
+                animation-name: treasure;
+                animation-duration: 15s;
+                             
+            }
+
+            #trans:hover{
+                width: 100%;
+                display: block;
+                
+            }
+            @keyframes treasure {
+            0%   {color: red;}
+            10%  {color: rgb(145, 255, 0);}
+            15%  {color: rgb(0, 251, 255);}
+            20%  {color: rgb(255, 0, 212);}
+            25%  {color: purple;}
+            25%  {color: yellow;}
+            25%  {color: rgb(0, 255, 30);}
+            25%  {color: rgb(0, 115, 255);}
+            25%  {color: rgb(255, 102, 0);}
+            25%  {color: rgb(247, 0, 255);}
+            50%  {color: rgb(98, 2, 71);}
+            75%  {color: rgb(255, 157, 0);}
+            100% {color: green;}
             }
 
         </style>
@@ -91,32 +153,43 @@
     <br>
         <main>
             <div>
-                <h3>TreasureFit: Brief Hstory</h3>
 
-                    <p> TreasureFit was founded in early 2024 with a vision to empower individuals to achieve their fitness goals through accessible and inclusive programs. Recognizing the importance of community and support, TreasureFit was born out of a desire to create a space where people could feel comfortable, motivated, and empowered on their fitness journeys.</p>
-        
-                    <p>From humble beginnings, TreasureFit has grown into a thriving fitness organization, offering a range of programs to cater to diverse needs and fitness levels. Whether you're a seasoned athlete or just starting your fitness journey, TreasureFit provides the tools, resources, and support you need to succeed.</p>
+                <button class="accordion">TreasureFit: Brief Hstory</button>
 
-                <h3>Mission and Vision</h3>
+                    <div class="panel">
+                        <div><p> TreasureFit was founded in early 2024 with a vision to empower individuals to achieve their fitness goals through accessible and inclusive programs. Recognizing the importance of community and support, TreasureFit was born out of a desire to create a space where people could feel comfortable, motivated, and empowered on their fitness journeys.</p>
+                         <p>From humble beginnings, TreasureFit has grown into a thriving fitness organization, offering a range of programs to cater to diverse needs and fitness levels. Whether you're a seasoned athlete or just starting your fitness journey, TreasureFit provides the tools, resources, and support you need to succeed.</p></div>
+                    </div>
+                <button class="accordion">Mission and Vision</button>
+                <div class="panel">
+                    <p><li> Mission Statement: To empower individuals to achieve their fitness goals through accessible, inclusive, and inspiring programs, fostering a community of support and celebrating every milestone.</li></p> 
+                    <p><li>Vision Statement: To be the leading fitness organization in the community, known for its innovative approach, dedication to client success, and positive impact on overall well-being.</li></p>
+                </div>
 
-                <p><li> Mission Statement: To empower individuals to achieve their fitness goals through accessible, inclusive, and inspiring programs, fostering a community of support and celebrating every milestone.</li></p> 
-                <p><li>Vision Statement: To be the leading fitness organization in the community, known for its innovative approach, dedication to client success, and positive impact on overall well-being.</li></p>
-    
-            <ul>
+           
 
-                <h3 style="color: white;">Key Milestones:</h3>
-        
-                    <li>Early 2025: Founded by <strong>Lesinya Treasure</strong> with a vision to create an inclusive and supportive fitness community.</li>
-                    <li>[2nd Week of January 2025]: Launched initial group fitness classes in local parks and community centers.</li>
-                    <li>[1st Week of February 2025]: Expanded offerings to include personal training and nutrition counseling.</li>
-                    <li>[2nd Week of February 2025]: Introduced online booking and expanded its reach through a user-friendly website.</li>
-                    <li>[4th Week of February 2025]: Achieved, 116 members and one coach.</li>
-                    <p>Instagram:<mark><b>@coach_moloisi</b></mark></p>
-            </ul>
-
-                <h3 style="color: white;" class="mediaq">Looking Ahead:</h3>
-        
+                <button class="accordion">Key Milestones:</button>
+            
+                <div class="panel">
+                    <ul>
+                        <li>Early 2025: Founded by <strong>Lesinya Treasure</strong> with a vision to create an inclusive and supportive fitness community.</li>
+                        <li>[2nd Week of January 2025]: Launched initial group fitness classes in local parks and community centers.</li>
+                        <li>[1st Week of February 2025]: Expanded offerings to include personal training and nutrition counseling.</li>
+                        <li>[2nd Week of February 2025]: Introduced online booking and expanded its reach through a user-friendly website.</li>
+                        <li>[4th Week of February 2025]: Achieved, 116 members and one coach.</li>
+                        <p>Instagram:<mark><b>@coach_moloisi</b></mark></p>                         
+                    </ul>
+                    
+                </div>
+                <button id="trans">We Are Happy To Help!!!</button>
+                <div >
+                    
+                    <h3 style="color: white;" class="mediaq">Looking Ahead:</h3>
                     <p>TreasureFit continues to evolve, always striving to provide innovative and accessible fitness programs. With a focus on community, empowerment, and results, TreasureFit is dedicated to helping individuals unlock their full potential and live healthier, happier lives.</p>
+                </div>
+           
+
+                
             </div>
         </main>
        <hr>
@@ -136,7 +209,22 @@
         </footer>
         <!--additional information still going to be added-->
         </div>
-
+        <script>
+            let acc = document.getElementsByClassName("accordion");
+            let i;
+            
+            for (i = 0; i < acc.length; i++) {
+              acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                let panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                  panel.style.maxHeight = null;
+                } else {
+                  panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+              });
+            }
+        </script>
         
 
    </body>

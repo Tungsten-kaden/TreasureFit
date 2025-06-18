@@ -7,9 +7,49 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"><!--this ensures that my page is mobile-friendly-->
         <link rel="stylesheet" href="style.css">
 
+
+        
+        <style>
+            .accordion{
+                color: rgb(236, 1, 1);
+                background-size: 30%;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                text-align: left;
+                font-size: larger;
+
+            }
+            .accordion::after{
+                content: '\002B';
+                font-size: large;
+                float: right;
+            }
+
+            .active::after{
+                content: '\2212';
+            }
+
+            .active, .accordion:hover {
+                 background-color: green;
+            }
+            .panel {
+                padding: 0 18px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+               
+            }
+            span:hover + #div4 {
+                display: block;
+            }
+
+        </style>
+
         
     </head> 
     <body>
+
         <header id="header1">
     <div id="div1">
         <!--This is my navigation division. it is user friendly-->
@@ -21,7 +61,7 @@
     
         <!--Below is my call to action button-->
         <a href="enquiry.html" id="a1">
-            <button type="button" onclick="alert('BOOK NOW')">Book Now</button>
+            <span><button type="button" onclick="alert('BOOK NOW')" id="button1">Book Now</button></span>
         </a>
         <br>
         <br>
@@ -58,12 +98,12 @@
                 </div>
             <br>
 
-                <div>
+                
                     <!--Introduction of my organization-->
 
-                    <h3 class="mediaq"> Brief Introduction:</h3>
-
-                    <p>Welcome to TreasureFit! We're more than just a fitness program; we're a community. Join us to discover your strength, achieve your goals, and find where you truly belong.</p>
+                    <button class="accordion"> Brief Introduction:</button>
+                <div class="panel">
+                    <div><p>Welcome to TreasureFit! We're more than just a fitness program; we're a community. Join us to discover your strength, achieve your goals, and find where you truly belong.</p></div>
                     <p>Ready to transform your life? TreasureFit offers personalized fitness journeys, expert guidance, and a supportive environment to help you unlock your best self.</p>
                 </div>
             </main>
@@ -93,12 +133,28 @@
                         <br>
                     <!--a cool button to go to the top of the page-->                             
                     <a href="index.html" id="a1">
-                    <button type="button" onclick="alert('Home')" id="b1">BackTop</button>
+                    <button type="button" onclick="alert('Home')" id="b1" id="button1">BackTop</button>
                     </a>
                 </div>
                 <!--my button still needs some editing-->
 
-            </footer>
+            </footer>  
+            <script>
+                var acc = document.getElementsByClassName("accordion");
+                var i;
+                
+                for (i = 0; i < acc.length; i++) {
+                  acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                      panel.style.maxHeight = null;
+                    } else {
+                      panel.style.maxHeight = panel.scrollHeight + "px";
+                    } 
+                  });
+                }
+                </script>
 
 
         </body>

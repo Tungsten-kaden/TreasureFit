@@ -25,7 +25,7 @@ Name of style sheet is styl.css
 ## Css added:
 most elements have a consistent styling throughout the html pages.
 
-## Below is evidence that my website responsive to all devices, including mobile, desktop, laptop and tablet:
+## Below is evidence that my website is responsive to all devices, including mobile, desktop, laptop and tablet:
 ### For Mobile:
 ![Alt text](images/wimage1.jpg)
 ![Alt text](images/wpic2.jpg)

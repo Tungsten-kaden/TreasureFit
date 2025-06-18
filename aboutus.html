@@ -6,10 +6,32 @@
         <meta http-equiv="refresh" content="60"><!--this will allow my page to refresh every 60 seconds-->
         <meta name="viewport" content="width=device-width, initial-scale=1"><!--this ensures that my page is mobile-friendly-->
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
          <style>
-            
 
+            #bling {
+                border: none;
+                background-color: rgb(0, 204, 255);
+                color: red;
+                height: 5%;
+                width: 5%;
+                border-radius: 10%;
+            }
+            #bling:hover{
+                background-color:rgb(155, 155, 178);
+        
+            }
+            input:hover{
+                background-color: rgb(155, 155, 181);
+
+            }
+            input{
+                border: none;
+                height: 5%;
+                width: 20%;         
+
+            }
 
         </style>
     </head>
@@ -36,10 +58,18 @@
                     <a href="aboutus.html">About us</a> |
                     <a href="services.html">Services</a> |
                     <a href="enquiry.html">Enquiry</a> |
-                    <a href="contactus.html">Contact Us</a> |   
-                </nav>
+                    <a href="contactus.html">Contact Us</a> |  
+
+                </nav> 
             </div>
         </header>
+                <form action="index.html" class="search-form">
+                    <input type="text" placeholder="Search..." class="search-input">
+                      <button id="bling"><i class="fa fa-search"></i></button>
+                  
+                </form>
+           
+        
 
         <div id="div2">
             <h1 class="mediaq">About Us</h1>

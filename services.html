@@ -6,6 +6,7 @@
         <meta http-equiv="refresh" content="60"><!--this will allow my page to refresh every 60 seconds-->
         <meta name="viewport" content="width=device-width, initial-scale=1"><!--this ensures that my page is mobile-friendly-->
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
         <style>
 
@@ -21,12 +22,120 @@
                 color: rgb(30, 0, 255);
                 font-size: 30px;
             }
+
+            * {
+                box-sizing: border-box;
+            }
+
+
+            .mySlides {
+                display: none;
+            }
+
+            .cursor {
+                cursor: pointer;
+            }
+
+
+
+            img {
+                margin-bottom: -4px;
+            }
+
+            .caption-container {
+                text-align: center;
+                background-color: black;
+                padding: 2px 16px;
+                color: white;
+            }
+
+            .fit {
+                opacity: 0.6;
+            }
+
+            .active,
+            .fit:hover {
+                opacity: 1;
+            }
+
+            img.hover-shadow {
+                transition: 0.3s;
+            }
+
+            .hover-shadow:hover {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            .accordion{
+                color: rgb(255, 0, 0);
+                background-size: 30%;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                text-align: center;
+                font-size: larger;
+               
+
+            }
+            .accordion::after{
+                content: '\002B';
+                font-size: large;
+                float: right;
+            }
+
+            .active::after{
+                content: '\2212';
+            }
+
+            .active, .accordion:hover {
+                 background-color: rgb(102, 255, 0);
+            }
+            .panel {
+                padding: 0 18px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+               
+            } 
+            input:hover{
+                background-color: rgb(0, 240, 253);
+            }
+            #myInput {
+               
+                background-position: 10px 12px;
+                background-repeat: no-repeat;
+                width: 100%;
+                font-size: 16px;
+                padding: 12px 20px 12px 40px;
+                border: 1px solid #ddd;
+                margin-bottom: 12px;
+            }
+
+            #myUL {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            #myUL li button {
+                border: 1px solid #ddd;
+                margin-top: -1px; /* Prevent double borders */
+                background-color: #f6f6f6;
+                padding: 12px;
+                text-decoration: none;
+                font-size: 18px;
+                color: black;
+                display: block
+            }
+
+            #myUL li button:hover:not(.header) {
+            background-color: #eee;
+            }
+
         </style>
     </head>
     
     <body>
-       
-    
+
         <header id="header1">  
             <div > 
                 <!--This is my navigation division. it is user friendly-->
@@ -48,10 +157,11 @@
                     <a href="contactus.html">Contact Us</a> |   
                </nav>
             </div>
+
     <br>    
             
         </header>
-
+            
             <div id="div2">
                     <h1 class="mediaq">Services</h1>  
             </div>
@@ -61,51 +171,157 @@
    <br>
     <!--my main services offered at the organization-->
        <main>
-        <div>
-            <img src="images/freetrial.jpg" width="300" id="imga2">
-            <img src="images/weights.jpg" width="400" id="imga3">
-            <ul>
-                <h3 style="margin: 8%;"> Core Fitness Services:</h3>
+        <h2 style="text-align:center">Lightbox</h2>
+
+        <div class="row">
+          <div class="column">
+            <img src="images/freetrial.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+          </div>
+          <div class="column">
+            <img src="images/healthy.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+          </div>
+          <div class="column">
+            <img src="images/gym.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+          </div>
+          <div class="column">
+            <img src="images/group.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+          </div>
+        </div>
+        
+        <div id="myModal" class="modal">
+          <span class="close cursor" onclick="closeModal()">&times;</span>
+          <div class="modal-content">
+        
+            <div class="mySlides">
+              <div class="numbertext">1 / 4</div>
+              <img src="images/freetrial.jpg" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+              <div class="numbertext">2 / 4</div>
+              <img src="images/healthy.jpg" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+              <div class="numbertext">3 / 4</div>
+              <img src="images/gym.jpg" style="width:100%">
+            </div>
+            
+            <div class="mySlides">
+              <div class="numbertext">4 / 4</div>
+              <img src="images/group.jpg" style="width:100%">
+            </div>
+            
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        
+            <div class="caption-container">
+              <p id="caption"></p>
+            </div>
+        
+        
+            <div class="column">
+              <img class="fit cursor" src="images/freetrial.jpg" style="width:100%" onclick="currentSlide(1)" alt="Gym Interior">
+            </div>
+            <div class="column">
+              <img class="fit cursor" src="images/healthy.jpg" style="width:100%" onclick="currentSlide(2)" alt="Nutritional Plan">
+            </div>
+            <div class="column">
+              <img class="fit cursor" src="images/gym.jpg" style="width:100%" onclick="currentSlide(3)" alt="Gym Equipment">
+            </div>
+            <div class="column">
+              <img class="fit cursor" src="images/group.jpg" style="width:100%" onclick="currentSlide(4)" alt="Group activities">
+            </div>   
+          </div>
+        </div>
+        
 
 
-                <b>Group Fitness Classes:</b>
-                <li>Variety of classes like HIIT, yoga, Pilates, Zumba, strength training, and cardio.</li>
-                <li>Classes for all fitness levels, from beginner to advanced.</li>
-                <li>Specialized classes like, prenatal fitness, senior fitness.</li>
+            <br>
+            <div>
+                <div class="relative">
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for services.." title="Type in a word" class="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-400 text-lg transition duration-300 ease-in-out">
+                            <!-- Search Icon (SVG) positioned inside the input -->
+                    <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <script src="https://cdn.tailwindcss.com"></script>
+                </div>
+                <h3 style="margin: 8%; font-size: 30px;">Fitness Services:</h3>
 
-    <br>
-                <b>Personal Training:</b>
-                <li>One-on-one sessions with certified personal trainers.</li>
-                <li>Customized workout plans tailored to individual goals.</li>
-                <li>Personalized attention and motivation.</li>
-                <li>Specialized personal trainers that focus on specific areas of fitness.</li>
+            <ul id="myUL">    
+                <li class="accordion"><button >Group Fitness Classes:</button></li>
+                
+                <div class="panel">
+                    <div>
+                        <p>1. Variety of classes like HIIT, yoga, Pilates, Zumba, strength training, and cardio.</p>
+                        <p>2. Classes for all fitness levels, from beginner to advanced.</p>
+                        <p>3. Specialized classes like, prenatal fitness, senior fitness.</p>                      
+                    </div>  
+                </div>
+        
+
+
+     <br>
+                <li class="accordion"><button>Personal Training:</button></li>
+                <div class="panel">
+                    <div >
+                        <p>1. One-on-one sessions with certified personal trainers.</p>
+                        <p>2. Customized workout plans tailored to individual goals.</p>
+                        <p>3. Personalized attention and motivation.</p>
+                        <p>4. Specialized personal trainers that focus on specific areas of fitness.</p>
+                    </div>
+                </div>
+        
+
     
     <br>
-    <!--more information to added-->
-                <b>Open Gym Access:</b>
-                <li>Access to a fully equipped gym with cardio and strength training equipment.</li>
-                <li>Flexible hours to accommodate different schedules.</li>
-                <li>Wellness and Nutrition Services:</li>
+                <!--more information to added-->
+                <li class="accordion"><button>Open Gym Access:</button></li>
+                <div class="panel">
+                    <div>
+                        <p>1. Access to a fully equipped gym with cardio and strength training equipment.</p>
+                        <p>2. Flexible hours to accommodate different schedules.</p>
+                        <p>3. Wellness and Nutrition Services:</p>        
+                    </div>
+                </div>
+            
         
     <br>
 
-                <b>Nutrition Counseling:</b>
-                <li>Personalized meal plans and dietary guidance.</li>
-                <li>Workshops on healthy eating and meal preparation.</li>
-                <li>Supplement guidance.</li>
+                <li class="accordion"><button>Nutritional Plan:</button></li>
+                <div class="panel">
+                    <div>
+                        <p>1. Personalized meal plans and dietary guidance.</p>
+                        <p>2. Workshops on healthy eating and meal preparation.</p>
+                        <p>3. Supplement guidance.</p>                        
+                    </div>
+                </div> 
+
 
     <br>
 
-                <b>Wellness Workshops:</b>
-                <li>Workshops on stress management, mindfulness, and sleep hygiene.</li>
-                <li>Guest speakers on various wellness topics.</li>
+                <li class="accordion"><button>Wellness Workshops</button></li>
+                <div class="panel">
+                    <div>
+                        <p>1. Workshops on stress management, mindfulness, and sleep hygiene.</p>
+                        <p>2. Guest speakers on various wellness topics.</p>                        
+                    </div>
+                </div>
+
 
     <br>
-            <!--additional information to added-->
-                <b>Online Resources:</b>
-                <li>Blog posts and articles about health, fitness and nutrition.
-                <li>Downloadable meal plans and workout routines.
-                <li>Online community forums.
+                <!--additional information to added-->
+                <li class="accordion"><button>Online Resources:</button></li>
+                <div class="panel">
+                    <div>
+                        <p>Blog posts and articles about health, fitness and nutrition.</p>
+                        <p>Downloadable meal plans and workout routines.</p>
+                        <p>Online community forums.</p>              
+                    </div>
+                </div>
+            <!-- No match message -->
+            <p id="noResultsMessage" class="text-gray-500 text-center italic py-2 hidden">No matching items found.</p>
             </ul>   
         </div>
        </main>
@@ -128,6 +344,92 @@
         </a>
         </div>
     </footer>
+        <script>
+        function openModal() {
+          document.getElementById("myModal").style.display = "block";
+        }
+        
+        function closeModal() {
+          document.getElementById("myModal").style.display = "none";
+        }
+        
+        var slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("fit");
+          let captionText = document.getElementById("caption");
+          if (n > slides.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " active";
+          captionText.innerHTML = dots[slideIndex-1].alt;
+        }
+        </script>
+        <script>
+            let acc = document.getElementsByClassName("accordion");
+            let i;
+            
+            for (i = 0; i < acc.length; i++) {
+              acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                let panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                  panel.style.maxHeight = null;
+                } else {
+                  panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+              });
+            }
+        </script>
+  <script>
+    function myFunction() {
+        let input, filter, ul, li, button, noResultsMessage, i, txtValue;
+        let foundMatch = false; // Flag to track if any item matches
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+        noResultsMessage = document.getElementById('noResultsMessage');
+        for (i = 0; i < li.length; i++) {
+
+            // Ensure we are only processing actual list items (not the 'noResultsMessage' paragraph)
+            if (li[i].id === 'noResultsMessage') {
+                continue; // Skip the noResultsMessage element itself
+            }           
+            button = li[i].getElementsByTagName("button")[0];
+            txtValue = button.textContent || button.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+                foundMatch = true; // A match was found
+            } else {    
+                li[i].style.display = "none";
+            }
+        }
+        // After checking all items, display or hide the 'no results' message
+        if (foundMatch) {
+            noResultsMessage.classList.add('hidden'); // Hide the message
+        } else {
+            noResultsMessage.classList.remove('hidden'); // Show the message
+        }
+    }
+    </script>
 
 </body>
 

@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /private/
+Disallow: /admin/
+Disallow: /cgi-bin/
+Allow: /
+
+Sitemap: https://www.treasurefit.com/sitemap.xml

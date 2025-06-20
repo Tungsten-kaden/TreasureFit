@@ -35,3 +35,6 @@ most elements have a consistent styling throughout the html pages.
 ### For Laptop and desktop
 ![Alt text](images/img5.jpg)
 ![Alt text](images/img6.jpg)
+
+## JavaScript added
+Code snippets to edit my website have been added. Now my website is functional and interactive

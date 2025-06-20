@@ -106,7 +106,57 @@
           height: 5%;
           width: 20%;         
 
-        }            
+        }  
+        /* Book Now Button - Top Left Corner */
+        #bookNowBtn {
+          float: left;
+          top: 15px;
+          left: 15px;
+          background-color: #220c93;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          font-size: 200%;
+          border-radius: 8px;
+          cursor: pointer;
+          animation: pulse 2s infinite;
+          z-index: 1000;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #bookNowBtn:hover {
+          background-color: #038492;
+        }
+
+        /* Pulse animation */
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+          100% { transform: scale(1); }
+        }
+
+        /* Toast Message */
+        .toast {
+          visibility: hidden;
+          min-width: 250px;
+          margin: 10px auto;
+          background-color: #333;
+          color: #fff;
+          text-align: center;
+          border-radius: 6px;
+          padding: 12px;
+          position: fixed;
+          top: 70px;
+          left: 15px;
+          z-index: 999;
+          opacity: 0;
+          transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .toast.show {
+          visibility: visible;
+          opacity: 1;
+        }          
 
         </style>
 
@@ -118,22 +168,29 @@
     <div id="div1">
         <!--This is my navigation division. it is user friendly-->
         
-         <nav>
-        <a href="index.html">
-            <img src="images/logo.jpg" width="100" alt="TreasureFit Logo" id="img1">
-        </a>
-    
-        <!--Below is my call to action button-->
-        <a href="enquiry.html" id="a1">
-            <span><button type="button" onclick="alert('BOOK NOW')" id="button1">Book Now</button></span>
-        </a>
-        <br>
-        <br>
-        <a href="index.html">Home</a> |
-        <a href="aboutus.html">About us</a> |
-        <a href="services.html">Services</a> |
-        <a href="enquiry.html">Enquiry</a> |
-        <a href="contactus.html">Contact Us</a> |   
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+          <!-- Left: Hamburger Icon -->
+          <button class="menu-toggle" id="menuToggle">&#9776;</button>
+
+          <!-- Center: Book Now Button -->
+          <button id="bookNowBtn">Book Now</button>
+
+          <!-- Right: Logo -->
+          <div class="logo">
+            <a href="index.html">
+              <img src="images/logo.jpg" alt="TreasureFit Logo" id="img1">
+            </a>
+          </div>
+
+          <!-- Hidden Nav Links -->
+          <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="enquiry.html">Enquiry</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+          </ul>
         </nav>
         </header>
     </div>
@@ -252,9 +309,22 @@
                 </div>
                 <!--my button still needs some editing-->
 
-            </footer>  
+            </footer> 
             <script>
-                let acc = document.getElementsByClassName("accordion");
+              document.getElementById("bookNowBtn").addEventListener("click", function () {
+                const toast = document.getElementById("toast");
+                toast.classList.add("show");
+
+                // Hide the toast after 2 seconds
+                setTimeout(() => {
+                  toast.classList.remove("show");
+                  // Redirect after toast disappears
+                  window.location.href = "enquiry.html";
+                }, 2000);
+              });
+            </script> 
+            <script>
+              let acc = document.getElementsByClassName("accordion");
                 let i;
                 
                 for (i = 0; i < acc.length; i++) {
@@ -271,8 +341,24 @@
                 function myfunction(){
                     document.getElementById("hide").style.display="block"
                 }
-                </script>
+              </script>
+                <script>
+                  // Toggle Nav Menu
+                  document.getElementById("menuToggle").addEventListener("click", function () {
+                    document.getElementById("navLinks").classList.toggle("show");
+                  });
                 
+                  // Book Now Behavior
+                  document.getElementById("bookNowBtn").addEventListener("click", function () {
+                    const toast = document.getElementById("toast");
+                    toast.classList.add("show");
+                
+                    setTimeout(() => {
+                      toast.classList.remove("show");
+                      window.location.href = "enquiry.html";
+                    }, 2000);
+                  });
+                </script>
 
 
         </body>

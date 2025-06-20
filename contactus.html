@@ -6,7 +6,6 @@
         <meta name="keyboard" content="TreasureFit, workouts">
         <meta http-equiv="refresh" content="60"><!--this will allow my page to refresh every 60 seconds-->
         <meta name="viewport" content="width=device-width, initial-scale=1"><!--this ensures that my page is mobile-friendly-->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com;">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -38,6 +37,45 @@
                 display: block;
             }
 
+            .form-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 30px;
+            }
+
+            #contactForm {
+                width: 100%;
+                max-width: 400px;
+                padding: 20px;
+                border: 2px solid #ccc;
+                border-radius: 10px;
+                background-color: #f9f9f9;
+            }
+
+            #contactForm input[type="text"],
+            #contactForm input[type="email"] {
+                width: 100%;
+                padding: 10px;
+                margin-top: 5px;
+                margin-bottom: 15px;
+                box-sizing: border-box;
+            }
+
+            #contactForm input[type="submit"] {
+                width: 100%;
+                background-color: #04AA6D;
+                color: white;
+                padding: 12px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            #contactForm input[type="submit"]:hover {
+                background-color: #03925e;
+            }
+
         </style>
 
     </head>
@@ -45,25 +83,33 @@
     <body>
         <header id="header1">
 
-        <div>
+                    <div>
 
-            <nav>
-           <a href="index.html">
-               <img src="images/logo.jpg" width="100" id="img1">
-           </a>
-           <!--Call To Action-->
-           <a href="enquiry.html" id="a1">
-            <button type="button" onclick="alert('BOOK NOW')" id="button1">Book Now</button>
-           </a>
-           <br>
-           <br>
-           <a href="index.html">Home</a> |
-           <a href="aboutus.html">About us</a> |
-           <a href="services.html">Services</a> |
-           <a href="enquiry.html">Enquiry</a> |
-           <a href="contactus.html">Contact Us</a> |   
-           </nav>
-       </div>
+                         <!-- Navigation Bar -->
+                         <nav class="navbar">
+                            <!-- Left: Hamburger Icon -->
+                            <button class="menu-toggle" id="menuToggle">&#9776;</button>
+          
+                            <!-- Center: Book Now Button -->
+                            <button id="bookNowBtn">Book Now</button>
+          
+                            <!-- Right: Logo -->
+                            <div class="logo">
+                                <a href="index.html">
+                                    <img src="images/logo.jpg" alt="TreasureFit Logo" id="img1">
+                                </a>
+                            </div>
+          
+                            <!-- Hidden Nav Links -->
+                            <ul class="nav-links" id="navLinks">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="aboutus.html">About Us</a></li>
+                                <li><a href="services.html">Services</a></li>
+                                <li><a href="enquiry.html">Enquiry</a></li>
+                                <li><a href="contactus.html">Contact Us</a></li>
+                            </ul>
+                        </nav>
+                    </div>
        </header>
                
        <div id="div2">
@@ -73,14 +119,70 @@
        <br>
     <main>
        <div>
+
+        <!--Form division fill-in required info-->
+        <!--tags used are form, label, input, select, options and textarea to crete a form-->
+
+             
+        <div class="form-container">
+            <form id="contactForm" novalidate>
+              <label for="username">Username:</label><br>
+              <input type="text" id="username" name="username" required minlength="3" placeholder="Your name"><br><br>
+          
+              <label for="useremail">Email:</label><br>
+              <input type="email" id="useremail" name="useremail" required placeholder="you@example.com"><br><br>
+              <label for="message">Your Message:</label><br>
+              <textarea id="message" name="message" rows="4" cols="30" required minlength="10" maxlength="300"></textarea><br><br>
+              <input type="submit" value="Submit">
+              <div id="contactMessage" style="margin-top: 10px;"></div>
+
+                            
+
+            </form>
+          </div>
+          <div id="googleMap" style="width:100%;height:300px;"></div>
+          <script>
+              function myMap() {
+                // Coordinates for Polokwane, South Africa
+                var polokwane = { lat: -23.9045, lng: 29.4689 };
             
-                <!--A picture weights that are available-->
-                <span><img src="images/weights.jpg" width="300"></span>
-            <div id="div4"> Relevant weights</div>
+                // Create map centered on Polokwane
+                var map = new google.maps.Map(document.getElementById("googleMap"), {
+                  center: polokwane,
+                  zoom: 12,
+                });
+            
+                // Add a marker
+                var marker = new google.maps.Marker({
+                  position: polokwane,
+                  map: map,
+                  title: "Polokwane",
+                });
+            
+                // Info window for the marker
+                var infoWindow = new google.maps.InfoWindow({
+                  content: "<h3>Polokwane</h3><p>Welcome to Polokwane, South Africa!</p>",
+                });
+            
+                // Open info window when marker is clicked
+                marker.addListener("click", function () {
+                  infoWindow.open(map, marker);
+                });
+            
+                // Optional: Add markers on map click
+                map.addListener("click", function (e) {
+                  new google.maps.Marker({
+                    position: e.latLng,
+                    map: map,
+                  });
+                });
+              }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOaRpMT-ITMuE_fOXG4ciW4eVDOTQO7j4&callback=myMap"></script>
             
                 <p class="mediaq">We're are here to help you on your fitness journey. Choose the best to connect with us:</p>
         <br>
-        <ul style="float: right; position: relative;">
+        <ul >
             <!--Contact information for my clients or those who are interested-->
             <li>Phone: +27 13 298 0356 (Monday - Friday, 8:00AM-9:00PM SAST)</li>
             <li>Email: treasurefit@gmail.com</li>
@@ -97,57 +199,33 @@
        </div>
           
        <div>
-        <div style="font-size: 25px; color: azure;">Fill in the form:</div>
-        <!--Form division fill-in required info-->
-        <!--tags used are form, label, input, select, options and textarea to crete a form-->
-        <form action="https://formsubmit.co/holahulu27@gmail.com" method="POST" target="_blank">
-            <label for="fname">First name:</label>
-            <br>
-            <input type="text" id="fname" name="fname" required>
-            <br>
-            <label for="lname">Last name:</label>
-            <br>
-            <input type="text" id="lname" name="lname" required>
-            <br>
-            <label for="email">Email Address:</label>
-            <br>
-            <input type="email" id="email" name="email" required>
-            <input type="hidden" name="_next" value=" https://tungsten-kaden.github.io/TreasureFit/">
-            <input type="hidden" name="_subject" value="New email wooooo!">
-            <input type="hidden" name="_autoresponse" value="Thank you Dear customer, you will receive a response within 3 working days">
-            <br>
-            <label for="pnumber">Phone Number</label>
-            <br>
-            <input type="tel" id="pnumber" name="pnumber" required>
-            <br>
-            <label for="choices">Choose first:</label>
-            <select id="choices" name="choices">
-                <option value="class information">Class Information</option>
-                <option value="personal training">Personal Training</option>
-                <option value="general enquiry">General Enquiry</option>
 
-            </select>
-            <br>
-            <br>
-            <label for="message box">Message Box</label>
-            <br>
-            <textarea type="message" id="message box" name="message box" placeholder="Type..." rows="4" cols="30"></textarea>
-
-            <br>
-            <br>
-            <input type="submit" value="Submit">
-        </form>
-        </div>
     </main>
 
     <br>
     <footer>
+
         <!--additional contact options-->
        <h3 class="mediaq">Follow Us on:</h3>
-       <div id="divf">
+       
+        <li>WhatsApp us at:+27 13 298 0356
+            <a href="https://wa.me/+27 13 298 0356" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30">
+            </a>
+        </li>
+        <div id="divf">
        <li><a href="https://www.facebook.com">Facebook TreasureFit</a></li>
+       <a href="https://www.facebook.com/yourusername" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook" style="font-size: 30px; margin: 0 10px; color: #3b5998;"></i>
+      </a>
        <li><a href="https://www.instagram.com">Instagram TreasureFit</a></li>
+       
 
+        <a href="https://www.instagram.com/treasure_lesinya" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram" style="font-size: 30px; margin: 0 10px; color: #b32c79;"></i>
+        </a>
+
+        
        <p><b>WE LOOK FORWARD TO HEARING FROM YOU!</b></p>
        
        <p>&copy; 2025 TreasureFit. All rights reserved.</p>
@@ -157,6 +235,62 @@
         </a>
 
         </div>
+        <script>
+            document.getElementById("contactForm").addEventListener("submit", function(e) {
+              e.preventDefault();
+            
+              const username = document.getElementById("username").value.trim();
+              const useremail = document.getElementById("useremail").value.trim();
+              const feedback = document.getElementById("contactMessage");
+            
+              let errors = [];
+            
+              if (username.length < 3) errors.push("Username must be at least 3 characters.");
+              if (!useremail.includes("@") || useremail.length < 5) errors.push("Invalid email address.");
+            
+              if (errors.length > 0) {
+                feedback.innerHTML = `<span style="color:red;">${errors.join("<br>")}</span>`;
+                return;
+              }
+            
+              // Send form via AJAX to formsubmit.co
+              fetch("https://formsubmit.co/ajax/holahulu27@gmail.com", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  username: username,
+                  email: useremail
+                })
+              })
+              .then(response => response.json())
+              .then(data => {
+                feedback.innerHTML = `<span style="color:green;">Thank you, ${username}! Your message has been received. We'll contact you shortly.</span>`;
+                document.getElementById("contactForm").reset();
+              })
+              .catch(error => {
+                feedback.innerHTML = `<span style="color:red;">There was an error sending your message. Please try again later.</span>`;
+              });
+            });
+            </script>
+
+<script>
+    // Toggle Nav Menu
+   document.getElementById("menuToggle").addEventListener("click", function () {
+   document.getElementById("navLinks").classList.toggle("show");
+   });
+             
+   // Book Now Behavior
+   document.getElementById("bookNowBtn").addEventListener("click", function () {
+       const toast = document.getElementById("toast");
+       toast.classList.add("show");
+             
+       setTimeout(() => {
+           toast.classList.remove("show");
+           window.location.href = "enquiry.html";
+       }, 2000);
+   });
+</script> 
+
 
     </footer>
        

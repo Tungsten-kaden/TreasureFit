@@ -139,23 +139,33 @@
         <header id="header1">  
             <div > 
                 <!--This is my navigation division. it is user friendly-->
-                <nav> 
-                    <a href="index.html">
-                        <img src="images/logo.jpg" width="100" id="img1">
-                    </a>
-                <!--Call To Action Button!-->
-                <a href="enquiry.html" id="a1">
-                    <button type="button" onclick="alert('BOOK NOW')" id="button1">Book Now</button>
-                </a>
-                    
-       <br>
-       <br>
-                    <a href="index.html">Home</a> |
-                    <a href="aboutus.html">About us</a> |
-                    <a href="services.html">Services</a> |
-                    <a href="enquiry.html">Enquiry</a> |
-                    <a href="contactus.html">Contact Us</a> |   
-               </nav>
+         <!-- Navigation Bar -->
+         <nav class="navbar">
+            <!-- Left: Hamburger Icon -->
+            <button class="menu-toggle" id="menuToggle">&#9776;</button>
+  
+            <!-- Center: Book Now Button -->       
+            
+               <button id="bookNowBtn">Book Now</button>
+                      
+            
+  
+            <!-- Right: Logo -->
+            <div class="logo">
+              <a href="index.html">
+                <img src="images/logo.jpg" alt="TreasureFit Logo" id="img1">
+              </a>
+            </div>
+  
+            <!-- Hidden Nav Links -->
+            <ul class="nav-links" id="navLinks">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="aboutus.html">About Us</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="enquiry.html">Enquiry</a></li>
+              <li><a href="contactus.html">Contact Us</a></li>
+            </ul>
+          </nav> 
             </div>
 
     <br>    
@@ -163,7 +173,7 @@
         </header>
             
             <div id="div2">
-                    <h1 class="mediaq">Services</h1>  
+                    <h2 class="mediaq" style="font-size: 50px; font-weight: 700;">Services</h2>  
             </div>
        
 
@@ -335,6 +345,11 @@
 
             <li>Phone: <mark>+27 13 298 0356 </mark></li>
             <li>Email: <mark>treasurefit@gmail.com</mark></li>
+            <li>WhatsApp us at:+27 13 298 0356
+                <a href="https://wa.me/+27 13 298 0356" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30">
+                </a>
+            </li>
             <li>Website:<mark> www.treasurefit.com </mark></li>
             <p>&copy; 2025 TreasureFit. All rights reserved.</p>
             
@@ -430,6 +445,23 @@
         }
     }
     </script>
+    <script>
+         // Toggle Nav Menu
+        document.getElementById("menuToggle").addEventListener("click", function () {
+        document.getElementById("navLinks").classList.toggle("show");
+        });
+                  
+        // Book Now Behavior
+        document.getElementById("bookNowBtn").addEventListener("click", function () {
+            const toast = document.getElementById("toast");
+            toast.classList.add("show");
+                  
+            setTimeout(() => {
+                toast.classList.remove("show");
+                window.location.href = "enquiry.html";
+            }, 2000);
+        });
+    </script>   
 
 </body>
 

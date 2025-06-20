@@ -57,47 +57,91 @@
     <br>
     <main>  
         
-        <div class="mediaq"><div id="form1">Fill in the form:</div></div>
+        <div class="mediaq"><div id="form1"><h2 style="font-size: 30px;">Fill in the form:</h2></div></div>
     <div><!--Form division fill-in required info-->
         <!--tags used are form, label, input, select, options and textarea to crete a form-->
-        <form action="https://formsubmit.co/holahulu27@gmail.com" method="POST" target="_blank">
-            <label for="fname">First name:</label>
-            <br>
-            <input type="text" id="fname" name="fname" required>
-            <br>
-            <label for="lname">Last name:</label>
-            <br>
-            <input type="text" id="lname" name="lname" required>
-            <br>
-            <label for="email">Email Address:</label>
-            <br>
-            <input type="email" id="email" name="email" required>
-            <input type="hidden" name="_next" value=" https://tungsten-kaden.github.io/TreasureFit/">
-            <input type="hidden" name="_subject" value="New email wooooo!">
-            <input type="hidden" name="_autoresponse" value="Thank you Dear customer, you will receive a response within 3 working days">
-            <br>
-            <label for="pnumber">Phone Number</label>
-            <br>
-            <input type="tel" id="pnumber" name="pnumber" required>
-            <br>
-            <!--Optional section choose to continue enquiry-->
-            <label for="choices">Choose first:</label>
-            <select id="choices" name="choices">
-                <option value="class information">Class Information</option>
-                <option value="personal training">Personal Training</option>
-                <option value="general enquiry">General Enquiry</option>
-
-            </select>
-            <br>
-            <br>
-            <label for="message box">Message Box</label>
-            <br>
-            <textarea type="message" id="message box" name="message box" placeholder="Type..." rows="4" cols="30"></textarea>
-
-            <br>
-            <br>
-            <input type="submit" value="Submit">
-        </form>
+            <form id="enquiryForm" novalidate>
+                <label for="fname">First name:</label><br>
+                <input type="text" id="fname" name="fname" required minlength="2"><br>
+              
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname" required minlength="2"><br>
+              
+                <label for="email">Email Address:</label><br>
+                <input type="email" id="email" name="email" required><br>
+              
+                <label for="pnumber">Phone Number:</label><br>
+                <input type="tel" id="pnumber" name="pnumber" required pattern="^\+?\d{10,13}$" placeholder="+27123456789"><br>
+              
+                <label for="choices">Choose service:</label><br>
+                <select id="choices" name="choices">
+                  <option value="class information">Class Information</option>
+                  <option value="personal training">Personal Training</option>
+                  <option value="general enquiry">General Enquiry</option>
+                </select><br><br>
+              
+                <label for="message">Your Message:</label><br>
+                <textarea id="message" name="message" rows="4" cols="30" required minlength="10" maxlength="300"></textarea><br><br>
+              
+                <input type="submit" value="Submit">
+                <div id="formMessage" style="margin-top: 10px;"></div>
+              </form>
+              
+              <script>
+              document.getElementById("enquiryForm").addEventListener("submit", function(e) {
+                e.preventDefault();
+              
+                const fname = document.getElementById("fname").value.trim();
+                const lname = document.getElementById("lname").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const phone = document.getElementById("pnumber").value.trim();
+                const message = document.getElementById("message").value.trim();
+                const choice = document.getElementById("choices").value;
+                const feedback = document.getElementById("formMessage");
+              
+                const phonePattern = /^\+?\d{10,13}$/;
+                let errors = [];
+              
+                if (fname.length < 2) errors.push("First name must be at least 2 characters.");
+                if (lname.length < 2) errors.push("Last name must be at least 2 characters.");
+                if (!email.includes("@") || email.length < 5) errors.push("Invalid email address.");
+                if (!phonePattern.test(phone)) errors.push("Enter a valid phone number.");
+                if (message.length < 10) errors.push("Message must be at least 10 characters.");
+              
+                if (errors.length > 0) {
+                  feedback.innerHTML = `<span style="color:red;">${errors.join("<br>")}</span>`;
+                  return;
+                }
+              
+                // Simulate pricing based on selection
+                let cost = "";
+                if (choice === "class information") cost = "R200/month";
+                else if (choice === "personal training") cost = "R400/session";
+                else cost = "Contact us for flexible pricing.";
+              
+                // Send form via AJAX
+                fetch("https://formsubmit.co/ajax/holahulu27@gmail.com", {
+                  method: "POST",
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    fname: fname,
+                    lname: lname,
+                    email: email,
+                    pnumber: phone,
+                    choices: choice,
+                    message: message
+                  })
+                })
+                .then(response => response.json())
+                .then(data => {
+                  feedback.innerHTML = `<span style="color:green;">Thank you ${fname}, your request for <strong>${choice}</strong> has been received. Estimated cost: <strong>${cost}</strong>. We'll get back to you soon!</span>`;
+                  document.getElementById("enquiryForm").reset();
+                })
+                .catch(error => {
+                  feedback.innerHTML = `<span style="color:red;">There was an error sending your enquiry. Please try again later.</span>`;
+                });
+              });
+              </script>
     </div>
     </main>
 

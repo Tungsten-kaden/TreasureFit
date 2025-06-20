@@ -38,3 +38,9 @@ most elements have a consistent styling throughout the html pages.
 
 ## JavaScript added
 Code snippets to edit my website have been added. Now my website is functional and interactive
+
+## Sitemap has been added
+[Title](sitemap.xml)
+
+## Robots.txt for search engine crawlers
+[Title](Robots.txt)
